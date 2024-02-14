@@ -17,6 +17,7 @@ public class Principal {
      */
     public static void main(String[] args) {
         //Hola soy indira esto es una prueba
+        //hola soy diego esto es una prueba
         Empleado e = new Empleado();
      
       int opcion;
