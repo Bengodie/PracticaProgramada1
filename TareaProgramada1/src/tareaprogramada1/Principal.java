@@ -4,6 +4,7 @@
  */
 package tareaprogramada1;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +19,9 @@ public class Principal {
     public static void main(String[] args) {
         //Hola soy indira esto es una prueba
         //hola soy diego esto es una prueba
-        Empleado e = new Empleado();
-     
-      int opcion;
+
+        ArrayList empleados = new ArrayList<>();
+        int opcion;
         do {
             opcion = Integer.parseInt(JOptionPane.showInputDialog("""
                     Seleccione una opción:
@@ -28,26 +29,116 @@ public class Principal {
                     2.Ingresar Programador
                     3.Ingresar Programador Senior
                     0. Salir
-                                                                  1 holaaaaaaaaa""")
+                    """)
             );
-               
+
             switch (opcion) {
-                case 1 -> { 
-                    e.Informacion();
+                case 1 -> {
                     
-                    JOptionPane.showMessageDialog(null, e.toString(), "Mostrar Datos", JOptionPane.INFORMATION_MESSAGE);
-                }case 2 ->{ 
-                    //programador
-                }case 3 ->{ 
-                    //Programador Senior
-                }case 0 ->{ 
+                  
+                    Empleado e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                    JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
+                    pedirEdad(),
+                    EstadoCivil(),
+                    Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")));
+                   
+                    empleados.add(e);
+                     JOptionPane.showMessageDialog(null, e.toString());
+
+                }
+               case 2 -> {
+                    Programador p= new Programador();
+                    p= new Programador(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                            JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
+                            pedirEdad(),
+                            EstadoCivil(),
+                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+                            JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
+                            p.Bono());
+                            
+                    empleados.add(p);
+                         JOptionPane.showMessageDialog(null, p.toString());
+                }
+                case 3 -> {
+                   ProgramadorMaster pm= new ProgramadorMaster(); 
+                   pm=  new ProgramadorMaster(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                            JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
+                            pedirEdad(),
+                            EstadoCivil(),
+                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+                            JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
+                            pm.Bono(),
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese los años de experiencia")));
+                     empleados.add(pm);
+                      JOptionPane.showMessageDialog(null, pm.toString());
+                }
+                case 0 -> {
                     JOptionPane.showMessageDialog(null, "Adios");
                     break;
-                }default ->
+                }
+                default ->
                     JOptionPane.showMessageDialog(null, "Opción inválida. "
-                            + "Por favor, seleccione nuevamente.");}
-        }while (opcion != 0); 
+                            + "Por favor, seleccione nuevamente.");
+            }
+        } while (opcion != 0);
+    }
+
+    public static int pedirEdad() {
+        int annios = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su edad"));
+        try {
+            if (annios < 18) {
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada corresponde a un menor edad");
+                pedirEdad();
+            }
+            if (annios > 45) {
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada no esta autorizada");
+                pedirEdad();
+
+            }
+        } catch (Exception ex) {
+
+            JOptionPane.showMessageDialog(null, ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+        return annios;
+    }
+    
+
+    public static boolean EstadoCivil() {
+        boolean casado = true;
+        int estado = Integer.parseInt(JOptionPane.showInputDialog(null, """
+                                                        Esta casado
+                                                        1. Si
+                                                        2. No
+                                                        """));
+        switch (estado) {
+            case 1 ->
+                casado = true;
+            case 2 ->
+                casado = false;
+            default -> {
+                try {
+                    if (estado < 2) {
+                        JOptionPane.showMessageDialog(null, "opcion "
+                                + "ingresada no esta autorizada");
+
+                    } else {
+                        throw new Exception("Error ");
+                    }
+                } catch (Exception ex) {
+
+                    JOptionPane.showMessageDialog(null, ex.getMessage(),
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    EstadoCivil();
+                }
+
+            }
+        }
+        return casado;
     }
 }
-   
-

@@ -8,23 +8,34 @@ package tareaprogramada1;
  *
  * @author indir
  */
-public class Programador extends Empleado{
-    
-   private int lineasDeCodigoPorHora ; 
-   
-    private String lenguajeDominante;
+public class Programador extends Empleado {
 
-    public Programador(int lineasDeCodigoPorHora, String lenguajeDominante, String nombre, int edad, String cedula, boolean casado, double salario) {
-        super(nombre, edad, cedula, casado, salario);
+    private int lineasDeCodigoPorHora;
+    private String lenguajeDominante;
+    private  double bono;
+
+    public Programador(String nombre, String cedula, int edad, boolean casado, double salario,int lineasDeCodigoPorHora, String lenguajeDominante, double bono) {
+        super(nombre, cedula, edad, casado, salario);
         this.lineasDeCodigoPorHora = lineasDeCodigoPorHora;
         this.lenguajeDominante = lenguajeDominante;
+        this.bono = bono;
     }
+
+//    public Programador(int lineasDeCodigoPorHora, String lenguajeDominante, double bono) {
+//        this.lineasDeCodigoPorHora = lineasDeCodigoPorHora;
+//        this.lenguajeDominante = lenguajeDominante;
+//        this.bono = bono;
+//    }
+
+   
 
     public Programador() {
         this.lineasDeCodigoPorHora = 0;
         this.lenguajeDominante = "";
+        this.bono=0.0;
     }
 
+    
     public int getLineasDeCodigoPorHora() {
         return lineasDeCodigoPorHora;
     }
@@ -40,16 +51,27 @@ public class Programador extends Empleado{
     public void setLenguajeDominante(String lenguajeDominante) {
         this.lenguajeDominante = lenguajeDominante;
     }
+
+    @Override
+    public double Bono() {
+        return this.lineasDeCodigoPorHora * (super.getSalario() * 0.007);
+    }
     
-   @Override
-     public String toString (){
-        return super.toString()
-                +"\nLineas de Codigo por Hora: "+ this.lineasDeCodigoPorHora
-                +"\n Lenguaje Dominante:"+this.lenguajeDominante    ;
+  
+    public void setBono(double bono) {
+        this.bono = bono;
     }
     
     
-    
-    
-    
+@Override
+     public String toString() {
+        return super.toString()
+                +"\nLineas de Codigo por Hora: " + this.getLineasDeCodigoPorHora()
+                +"\n Lenguaje Dominante:" + this.getLenguajeDominante()    
+                +"\n Bono "+Bono()+" colones" ;
+}
+
+    public double getBono() {
+        return bono;
+    }
 }
