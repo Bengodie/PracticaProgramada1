@@ -115,18 +115,27 @@ public class Principal {
     public static int clasificarEdad() {
         int annios = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su edad"));
         try {
-            if (annios <= 21) {
+            if (annios < 18){
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada correponde a un menor de edad.");
+               clasificarEdad(); 
+            }
+            if (annios <= 21 && annios >= 18) {
                 JOptionPane.showMessageDialog(null, "La edad "
                         + "ingresada corresponde a un nivel principiante");
-                clasificarEdad();
+                
             }
             if (annios >= 22 && annios <= 35) {
                 JOptionPane.showMessageDialog(null, "La edad "
-                        + "ingresada corresponde a un nivel intermedio");
-            }else{
+                        + "ingresada corresponde a un nivel intermedio"); 
+            } 
+            if (annios >=35 && annios <=45){
                 JOptionPane.showMessageDialog(null, "La edad "
                         + "ingresada corresponde a un nivel senior");
-
+            }else{
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada corresponde a un mayor de 45, no esta autorizada");
+                clasificarEdad();
             }
             
         } catch (Exception ex) {
