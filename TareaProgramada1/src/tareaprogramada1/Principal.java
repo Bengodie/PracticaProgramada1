@@ -5,6 +5,8 @@
 package tareaprogramada1;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -17,13 +19,17 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Hola soy indira esto es una prueba
+  //Hola soy indira esto es una prueba
         //hola soy diego esto es una prueba
-        Bienvenida b = new Saludo();
-        ArrayList empleados = new ArrayList<>();
+        Bienvenida b=  new Saludo();
+       
+       
         int opcion;
         b.saludo();
+         ArrayList empleados = new ArrayList<>();
+        
         do {
+          
             opcion = Integer.parseInt(JOptionPane.showInputDialog("""
                     Seleccione una opción:
                     1.Ingresar Empleado regular
@@ -35,15 +41,6 @@ public class Principal {
 
             switch (opcion) {
                 case 1 -> {
-<<<<<<< HEAD
-
-                    Empleado e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
-                            JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
-                            pedirEdad(),
-                            EstadoCivil(),
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")));
-
-=======
                     
                   
                     Empleado e = new Empleado();
@@ -54,49 +51,52 @@ public class Principal {
                     Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su salario")),
                     e.clasificarEdad());
                     
-                   
->>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
-                    empleados.add(e);
-                    JOptionPane.showMessageDialog(null, e.toString());
+                      JOptionPane.showMessageDialog(null, e.toString());
 
+                   int preg = Integer.parseInt(JOptionPane.showInputDialog(null, """
+                                                                                 ¿desea aumentar el salario del empleado? 
+                                                                                 1. si 
+                                                                                 2. no"""));
+                     if(preg ==1){
+                     e.aumentarSalario(  Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese el porcentaje de aumento con base al salario")));
+                     JOptionPane.showMessageDialog(null, e.toString());
+                     }if(preg==2){
+                           JOptionPane.showMessageDialog(null, "su salario queda igual");
+                     }else{
+                         
+                     }
+                        empleados.add(e);
                 }
-                case 2 -> {
-                    Programador p = new Programador();
-                    p = new Programador(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+
+               case 2 -> {
+                    Programador p= new Programador();
+                    p= new Programador(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                             JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
-<<<<<<< HEAD
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
-=======
                             p.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
->>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             p.Bono());
-
+                            
                     empleados.add(p);
-                    JOptionPane.showMessageDialog(null, p.toString());
+                         JOptionPane.showMessageDialog(null, p.toString());
                 }
                 case 3 -> {
-                    ProgramadorMaster pm = new ProgramadorMaster();
-                    pm = new ProgramadorMaster(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                   ProgramadorMaster pm= new ProgramadorMaster(); 
+                   pm=  new ProgramadorMaster(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                             JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
-<<<<<<< HEAD
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
-=======
                            pm.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
->>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             pm.Bono(),
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese los años de experiencia")));
-                    empleados.add(pm);
-                    JOptionPane.showMessageDialog(null, pm.toString());
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese los años de experiencia")));
+                     empleados.add(pm);
+                      JOptionPane.showMessageDialog(null, pm.toString());
                 }
                 case 0 -> {
                     JOptionPane.showMessageDialog(null, "Adios");
@@ -107,6 +107,11 @@ public class Principal {
                             + "Por favor, seleccione nuevamente.");
             }
         } while (opcion != 0);
+        Iterator<Empleado> nomIt = empleados.iterator();
+        while (nomIt.hasNext()) {
+            Empleado s = nomIt.next();
+            System.out.print(s + " / ");
+    }
     }
 
     public static int pedirEdad() {
@@ -129,8 +134,10 @@ public class Principal {
                     "Error", JOptionPane.ERROR_MESSAGE);
 
         }
+       
         return annios;
     }
+    
 
     public static boolean EstadoCivil() {
         boolean casado = true;
@@ -139,32 +146,33 @@ public class Principal {
                                                         1. Si
                                                         2. No
                                                         """));
-        try {
-
-            if (estado == 1) {
-
+        switch (estado) {
+            case 1 ->
                 casado = true;
-            }
-            if (estado == 2) {
-
+            case 2 ->
                 casado = false;
-            }
-            if (estado > 2) {
-                JOptionPane.showMessageDialog(null, "opcion "
-                        + "ingresada no esta autorizada");
-                EstadoCivil();
+            default -> {
+                try {
+                    if (estado > 2) {
+                        JOptionPane.showMessageDialog(null, "opcion "
+                                + "ingresada no esta autorizada");
+
+                    } else {
+                        throw new Exception("Error ");
+                    }
+                } catch (Exception ex) {
+
+                    JOptionPane.showMessageDialog(null, ex.getMessage(),
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    EstadoCivil();
+                }
 
             }
-        } catch (Exception ex) {
-
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-            EstadoCivil();
         }
         return casado;
-
+    }
+    
     
 }
 
-    }
 

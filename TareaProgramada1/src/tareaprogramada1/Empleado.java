@@ -18,10 +18,12 @@ public class Empleado extends Persona {
     public Empleado(String nombre, String cedula, int edad, boolean casado, double salario, String clasificar) {
         super(nombre, cedula, edad, casado);
         this.salario = salario;
+        this.clasificar=clasificar;
     }
 
     public Empleado() {
         this.salario = 0.0;
+        this.clasificar="";
     }
 
     @Override
@@ -51,28 +53,7 @@ public class Empleado extends Persona {
                 + "\nClasificar = " + this.getClasificar() ;
     }
 
-    public int pedirEdad() {
-        int annios = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su edad"));
-        try {
-            if (annios < 18) {
-                JOptionPane.showMessageDialog(null, "La edad "
-                        + "ingresada corresponde a un menor edad");
-                pedirEdad();
-            }
-            if (annios > 45) {
-                JOptionPane.showMessageDialog(null, "La edad "
-                        + "ingresada no esta autorizada");
-                pedirEdad();
-
-            }
-        } catch (Exception ex) {
-
-            JOptionPane.showMessageDialog(null, ex.getMessage(),
-                    "Error", JOptionPane.ERROR_MESSAGE);
-
-        }
-        return annios;
-    }
+    
        public String clasificarEdad() {
         if (super.getEdad() <= 21) {
             return "Principiante";
@@ -82,9 +63,12 @@ public class Empleado extends Persona {
             return "Senior";
         }
     }
-       public static double aumentarSalario(double salario, double porcentajeAumento) {
+       public double aumentarSalario( double porcentajeAumento) {
+           
         double aumento = salario * (porcentajeAumento / 100);
-        return salario + aumento;
+        double total=salario +aumento;
+        salario=total;
+        return salario ;
     }
    
 }
