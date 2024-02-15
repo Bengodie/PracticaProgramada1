@@ -73,5 +73,9 @@ public class Empleado extends Persona {
             return "Senior";
         }
     }
+       public static double aumentarSalario(double salario, double porcentajeAumento) {
+        double aumento = salario * (porcentajeAumento / 100);
+        return salario + aumento;
+    }
    
 }
