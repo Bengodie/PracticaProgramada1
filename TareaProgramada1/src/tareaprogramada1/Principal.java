@@ -37,11 +37,14 @@ public class Principal {
                 case 1 -> {
                     
                   
-                    Empleado e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                    Empleado e = new Empleado();
+                    e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                     JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
                     pedirEdad(),
                     EstadoCivil(),
-                    Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")));
+                    Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                    e.clasificarEdad());
+                    
                    
                     empleados.add(e);
                      JOptionPane.showMessageDialog(null, e.toString());
@@ -54,6 +57,7 @@ public class Principal {
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                            p.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             p.Bono());
@@ -68,6 +72,7 @@ public class Principal {
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                           pm.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             pm.Bono(),
