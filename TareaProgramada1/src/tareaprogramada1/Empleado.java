@@ -64,6 +64,14 @@ public class Empleado extends Persona {
         }
         return annios;
     }
-
+       public static String clasificarEdad(int edad) {
+        if (edad <= 21) {
+            return "Principiante";
+        } else if (edad >= 22 && edad <= 35) {
+            return "Intermedio";
+        } else {
+            return "Senior";
+        }
+    }
    
 }
