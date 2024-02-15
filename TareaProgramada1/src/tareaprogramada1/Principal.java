@@ -19,9 +19,10 @@ public class Principal {
     public static void main(String[] args) {
         //Hola soy indira esto es una prueba
         //hola soy diego esto es una prueba
-
+        Bienvenida b=  new Saludo();
         ArrayList empleados = new ArrayList<>();
         int opcion;
+        b.saludo();
         do {
             opcion = Integer.parseInt(JOptionPane.showInputDialog("""
                     Seleccione una opción:
