@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 public class Empleado extends Persona {
 
     private double salario;
+    private String clasificar;
 
-    public Empleado(String nombre, String cedula, int edad, boolean casado, double salario) {
+    public Empleado(String nombre, String cedula, int edad, boolean casado, double salario, String clasificar) {
         super(nombre, cedula, edad, casado);
         this.salario = salario;
     }
@@ -35,11 +36,19 @@ public class Empleado extends Persona {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+       public String getClasificar() {
+        return clasificar;
+    }
+
+    public void setClasificar(String clasificar) {
+        this.clasificar = clasificar;
+    }
 
     @Override
     public String toString() {
         return super.toString()
-                + "\nSalario=" + this.getSalario() ;
+                + "\nSalario = " + this.getSalario() 
+                + "\nClasificar = " + this.getClasificar() ;
     }
 
     public int pedirEdad() {
@@ -64,6 +73,18 @@ public class Empleado extends Persona {
         }
         return annios;
     }
-
+       public String clasificarEdad() {
+        if (super.getEdad() <= 21) {
+            return "Principiante";
+        } else if (super.getEdad() >= 22 && super.getEdad() <= 35) {
+            return "Intermedio";
+        } else {
+            return "Senior";
+        }
+    }
+       public static double aumentarSalario(double salario, double porcentajeAumento) {
+        double aumento = salario * (porcentajeAumento / 100);
+        return salario + aumento;
+    }
    
 }

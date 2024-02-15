@@ -35,6 +35,7 @@ public class Principal {
 
             switch (opcion) {
                 case 1 -> {
+<<<<<<< HEAD
 
                     Empleado e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                             JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
@@ -42,6 +43,19 @@ public class Principal {
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")));
 
+=======
+                    
+                  
+                    Empleado e = new Empleado();
+                    e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
+                    JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
+                    pedirEdad(),
+                    EstadoCivil(),
+                    Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+                    e.clasificarEdad());
+                    
+                   
+>>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
                     empleados.add(e);
                     JOptionPane.showMessageDialog(null, e.toString());
 
@@ -53,7 +67,12 @@ public class Principal {
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+<<<<<<< HEAD
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+=======
+                            p.clasificarEdad(),
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+>>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             p.Bono());
 
@@ -67,7 +86,12 @@ public class Principal {
                             pedirEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
+<<<<<<< HEAD
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+=======
+                           pm.clasificarEdad(),
+                           Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
+>>>>>>> 6359bcd3baaf68e9b7a8e3be39a04e70765de826
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             pm.Bono(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese los años de experiencia")));
