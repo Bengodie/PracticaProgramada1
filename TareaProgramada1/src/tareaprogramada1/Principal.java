@@ -46,10 +46,10 @@ public class Principal {
                     Empleado e = new Empleado();
                     e = new Empleado(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                     JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
-                    pedirEdad(),
+                    clasificarEdad(),
                     EstadoCivil(),
-                    Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su salario")),
-                    e.clasificarEdad());
+                    Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese su salario")));
+                    
                     
                       JOptionPane.showMessageDialog(null, e.toString());
 
@@ -72,10 +72,9 @@ public class Principal {
                     Programador p= new Programador();
                     p= new Programador(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                             JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
-                            pedirEdad(),
+                            clasificarEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
-                            p.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             p.Bono());
@@ -87,10 +86,9 @@ public class Principal {
                    ProgramadorMaster pm= new ProgramadorMaster(); 
                    pm=  new ProgramadorMaster(JOptionPane.showInputDialog(null, "Ingrese su nombre y apellido:"),
                             JOptionPane.showInputDialog(null, "Ingrese su cedula:"),
-                            pedirEdad(),
+                            clasificarEdad(),
                             EstadoCivil(),
                             Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su salario")),
-                           pm.clasificarEdad(),
                            Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el total de lineas trabajadas por hora")),
                             JOptionPane.showInputDialog(null, "Ingrese su lenguaje dominante"),
                             pm.Bono(),
@@ -114,20 +112,32 @@ public class Principal {
     }
     }
 
-    public static int pedirEdad() {
+    public static int clasificarEdad() {
         int annios = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese su edad"));
         try {
-            if (annios < 18) {
+            if (annios < 18){
                 JOptionPane.showMessageDialog(null, "La edad "
-                        + "ingresada corresponde a un menor edad");
-                pedirEdad();
+                        + "ingresada correponde a un menor de edad.");
+               clasificarEdad(); 
             }
-            if (annios > 45) {
+            if (annios <= 21 && annios >= 18) {
                 JOptionPane.showMessageDialog(null, "La edad "
-                        + "ingresada no esta autorizada");
-                pedirEdad();
-
+                        + "ingresada corresponde a un nivel principiante");
+                
             }
+            if (annios >= 22 && annios <= 35) {
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada corresponde a un nivel intermedio"); 
+            } 
+            if (annios >=35 && annios <=45){
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada corresponde a un nivel senior");
+            }else{
+                JOptionPane.showMessageDialog(null, "La edad "
+                        + "ingresada corresponde a un mayor de 45, no esta autorizada");
+                clasificarEdad();
+            }
+            
         } catch (Exception ex) {
 
             JOptionPane.showMessageDialog(null, ex.getMessage(),

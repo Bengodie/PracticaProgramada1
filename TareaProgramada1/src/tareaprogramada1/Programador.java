@@ -14,8 +14,8 @@ public class Programador extends Empleado {
     private String lenguajeDominante;
     private  double bono;
 
-    public Programador(String nombre, String cedula, int edad, boolean casado, double salario, String clasificar, int lineasDeCodigoPorHora, String lenguajeDominante, double bono) {
-        super(nombre, cedula, edad, casado, salario, clasificar);
+    public Programador(String nombre, String cedula, int edad, boolean casado, double salario, int lineasDeCodigoPorHora, String lenguajeDominante, double bono) {
+        super(nombre, cedula, edad, casado, salario);
         this.lineasDeCodigoPorHora = lineasDeCodigoPorHora;
         this.lenguajeDominante = lenguajeDominante;
         this.bono = bono;
